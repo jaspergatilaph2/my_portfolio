@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jasper's Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/icon_3.png') }}">
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      /* Navbar */
+      .navbar {
+        transition: background-color 0.3s ease-in-out;
+      }
+      .navbar.scrolled {
+        background-color: #212529 !important;
+      }
+
+      /* Hero Section */
+      header {
+        background: linear-gradient(135deg, #007bff, #6610f2);
+        background-size: 300% 300%;
+        animation: gradientBG 10s ease infinite;
+      }
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      header h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+      }
+      header p {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+      }
+
+      /* Section titles */
+      section h2 {
+        font-weight: 700;
+        color: #333;
+        position: relative;
+        display: inline-block;
+      }
+      section h2::after {
+        content: "";
+        width: 50px;
+        height: 4px;
+        background: #007bff;
+        display: block;
+        margin: 8px auto 0;
+        border-radius: 2px;
+      }
+
+      /* Cards */
+      .card {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+      .card img {
+        object-fit: cover;
+        height: 200px;
+      }
+      @media (max-width: 576px) {
+        .card img {
+          height: 150px;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background: #212529;
+      }
+      .social-icons a {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 0 10px;
+        transition: color 0.3s;
+      }
+      .social-icons a:hover {
+        color: #0d6efd;
+      }
+
+      .typewriter {
+        display: inline-block;
+        overflow: hidden; /* Ensures the text is hidden until typed */
+        border-right: 3px solid #fff; /* Cursor effect */
+        white-space: nowrap; /* Keeps text in a single line */
+        animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+        font-weight: 700;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #fff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Jasper.dev</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header style="min-height: 100vh" class="d-flex">
+      <!-- Left side -->
+      <div
+        class="d-flex flex-column justify-content-center text-start px-5"
+        style="flex: 1; background: #f2f2f2"
+      >
+        <h3 class="text-dark mb-2">Hi, I am</h3>
+        <h1 class="fw-bold display-4 text-dark">Jasper</h1>
+        <p class="lead text-muted">Full-Stack Developer / UI Designer</p>
+
+        <!-- Social Icons -->
+        <div class="mt-3">
+          <a href="#" class="btn btn-outline-dark btn-sm rounded-circle me-2"
+            ><i class="bi bi-envelope"></i
+          ></a>
+          <a href="#" class="btn btn-outline-dark btn-sm rounded-circle me-2"
+            ><i class="bi bi-github"></i
+          ></a>
+          <a href="#" class="btn btn-outline-dark btn-sm rounded-circle"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div
+        class="d-flex align-items-center justify-content-center"
+        style="flex: 1; background: #000"
+      >
+        <img
+          src="{{ url_for('static', filename='images/image_4.png') }}"
+          alt="Jasper Profile"
+          style="max-width: 400px; height: auto"
+          class="shadow-lg"
+        />
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+      <div class="container text-center">
+        <h2>About Me</h2>
+        <p class="mt-3">
+          I am a developer with experience in PHP, Laravel, Flask, and web
+          development. I enjoy creating interactive, responsive, and
+          user-friendly websites. My passion is solving real-world problems
+          through code.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4">My Projects</h2>
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <img
+                src="{{ url_for('static', filename='images/image_1.png') }}"
+                class="card-img-top"
+                alt="Project 1"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Project 1</h5>
+                <p class="card-text">
+                  A short description of your project goes here.
+                </p>
+                <a href="#" class="btn btn-primary mt-auto">View More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <img
+                src="{{ url_for('static', filename='images/image_2.png') }}"
+                class="card-img-top"
+                alt="Project 2"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Project 2</h5>
+                <p class="card-text">Another project description goes here.</p>
+                <a href="#" class="btn btn-primary mt-auto">View More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <img
+                src="{{ url_for('static', filename='images/image_3.png') }}"
+                class="card-img-top"
+                alt="Project 3"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Project 3</h5>
+                <p class="card-text">Another project description goes here.</p>
+                <a href="#" class="btn btn-primary mt-auto">View More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+      <div class="container text-center">
+        <h2>Contact Me</h2>
+        <p class="mt-3">Interested in working together? Reach out below!</p>
+        <a
+          href="mailto:your.email@example.com"
+          class="btn btn-primary btn-lg shadow"
+          >Email Me</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-4">
+      <div class="container">
+        <p class="mb-2">&copy; 2025 Jasper's Portfolio. All Rights Reserved.</p>
+        <div class="social-icons">
+          <a href="#"><i class="bi bi-github"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar background change on scroll
+      window.addEventListener("scroll", function () {
+        let navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>
